@@ -3,7 +3,6 @@
 		<div class="header py-2">
 			<div class="icons d-flex justify-content-between">
 				<router-link to="/">
-					<nav data-v-5d5c126d>…</nav>
 					<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 				</router-link>
 				<Icon icon="lucide:pen-square" color="#fff" width="25" />
@@ -201,7 +200,8 @@ export default {
 	height: 100%;
 }
 
-/* .excerpt {
+.excerpt {
+	position: relative;
 	max-height: 6em;
 	overflow: hidden;
 	line-height: 1.4em;
@@ -209,8 +209,17 @@ export default {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-	box-shadow: 0px -104px 40px -120px rgb(9, 9, 9) inset;
-} */
+	/* box-shadow: 0px -111px 26px -79px rgba(255,255,255,1) inset; */
+}
+
+.excerpt::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to bottom, transparent, var(--quaternary-color));
+}
+
 
 .subtask-box {
 	display: inline-block;
@@ -223,7 +232,6 @@ export default {
 }
 
 .description {
-	/* font-weight: lighter; */
 	color: #484848;
 	font-style: italic;
 }

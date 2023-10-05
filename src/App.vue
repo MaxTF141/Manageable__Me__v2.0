@@ -40,11 +40,6 @@ body::-webkit-scrollbar {
 	margin: 0;
 }
 
-
-h2 {
-	color: var(--tertiary-color);
-}
-
 h4 {
 	color: var(--tertiary-color) !important;
 	font-size: 1rem !important;

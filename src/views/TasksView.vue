@@ -62,7 +62,6 @@ export default {
 	computed: {
 		tasks() {
 			let tasks = JSON.parse(localStorage.getItem('tasks'));
-			console.log(tasks);
 			return tasks; 
 		}
 	},
@@ -92,7 +91,9 @@ export default {
 
 .heading {
 	/* font-size: 1rem; */
+	color: var(--secondary-color);
 	font-weight: bold;
+	font-size: 2rem;
 }
 
 .current-date {

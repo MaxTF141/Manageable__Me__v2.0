@@ -102,7 +102,6 @@ export default {
 				dueDate: '',
 				subtasks: [],
 			};
-			console.log(tasks);
 		},
 		removeSubtask(subtaskId) {
 			this.add.subtasks = this.add.subtasks.filter((subtask) => subtask.id !== subtaskId);
