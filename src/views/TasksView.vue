@@ -4,7 +4,7 @@
 			<div class="container">
 				<div class="row d-flex align-items-start">
 					<div class="col-10">
-						<h1 class="heading">Manageable Me</h1>
+						<h2 class="heading">Manageable Me</h2>
 						<p class="current-date">{{currentDate()}}</p>
 					</div>
 					<div class="col-2">
@@ -91,7 +91,7 @@ export default {
 }
 
 .heading {
-	font-size: 1rem;
+	/* font-size: 1rem; */
 	font-weight: bold;
 }
 

@@ -3,6 +3,7 @@
 		<div class="header py-2">
 			<div class="icons d-flex justify-content-between">
 				<router-link to="/">
+					<nav data-v-5d5c126d>…</nav>
 					<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 				</router-link>
 				<Icon icon="lucide:pen-square" color="#fff" width="25" />
@@ -39,11 +40,29 @@
 			<div class="subtask-box my-1" v-for="subtask in task.subtasks" :key="subtask.id">
 				<div class="row">
 					<div class="col-1">
-						<Icon @click.prevent="toggleDone(subtask)" class="checkmark" icon="teenyicons:tick-circle-solid" :color="isDoneTick(subtask)" />
+						<Icon @click.prevent="toggleDone(subtask)" class="checkmark"
+							:icon="subtask.completed ? 'mdi:checkbox-indeterminate' : 'material-symbols:indeterminate-check-box-outline'"
+							:color="isDoneTick(subtask)" width="20" />
 					</div>
 					<div class="col-11">
 						<p class="m-0" :style="'color: ' + isDoneColor(subtask)">{{ subtask.description }}</p>
 					</div>
+				</div>
+			</div>
+			<div class="btn-container d-flex flex-column mt-auto py-5">
+				<button @click="confirmationModal" v-if="taskDone" class="done-btn btn">Done</button>
+				<button v-else disabled class="done-btn btn">Done</button>
+			</div>
+		</div>
+		<div class="confirmation-modal">
+			<div class="confirm-box">
+				<p class="text-center">Are you sure you want to mark <span class="fw-bold">"{{ task.title }}"</span> as
+					completed?</p>
+				<div class="d-flex justify-content-end gap-4 p-2">
+					<router-link to="/">
+						<button @click="isDone(task)" class="yes-btn btn btn-light">Yes, It's done</button>
+					</router-link>
+					<button @click="cancelBack()" class="btn btn-light">No, Not yet</button>
 				</div>
 			</div>
 		</div>
@@ -56,7 +75,7 @@ export default {
 	data() {
 		return {
 			excerpt: true,
-			tasks: []
+			tasks: [],
 		}
 	},
 	components: {
@@ -65,6 +84,10 @@ export default {
 	computed: {
 		task() {
 			return this.tasks.find(task => task.id === this.id);
+		},
+		taskDone() {
+			return this.task.subtasks.every(subtask => subtask.completed);
+			// return false;
 		}
 	},
 	methods: {
@@ -96,22 +119,38 @@ export default {
 			}
 		},
 		isDoneColor(subtask) {
-			if(subtask.completed) {
+			if (subtask.completed) {
 				return '#999999'
 			} else {
 				return ''
-			}	
+			}
 		},
 		toggleDone(subtask) {
 			subtask.completed = !subtask.completed;
-
 			let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 			let index = tasks.findIndex(task => task.id === this.id);
-			if(index !== -1) {
+			if (index !== -1) {
 				tasks[index] = this.task;
 				localStorage.setItem('tasks', JSON.stringify(tasks));
 			}
 		},
+		isDone(task) {
+			task.isDone = !task.isDone;
+			let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+			let index = tasks.findIndex(task => task.id === this.id);
+			if (index !== -1) {
+				tasks[index] = this.task;
+				localStorage.setItem('tasks', JSON.stringify(tasks));
+			}
+		},
+		confirmationModal() {
+			const modal = document.querySelector('.confirmation-modal');
+			modal.style.display = 'flex';
+		},
+		cancelBack() {
+			const modal = document.querySelector('.confirmation-modal');
+			modal.style.display = 'none';
+		}
 	},
 	created() {
 		this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -122,6 +161,7 @@ export default {
 .single-task {
 	background: linear-gradient(90deg, #4a0174 0%, #aa03e2 100%);
 	height: 100vh;
+	min-height: 100vh;
 }
 
 .task-container {
@@ -158,6 +198,7 @@ export default {
 .task-container {
 	position: relative;
 	z-index: 1;
+	height: 100%;
 }
 
 /* .excerpt {
@@ -175,17 +216,55 @@ export default {
 	display: inline-block;
 	background-color: var(--secondary-color);
 	border-radius: 10px;
-	/* height: 10rem; */
-	width: 95%;
-	/* margin: 0.5rem; */
+	width: 100%;
 	font-size: 1rem;
 	box-shadow: var(--light-box-shadow);
 	padding: 10px;
 }
 
 .description {
-	font-weight: lighter;
+	/* font-weight: lighter; */
 	color: #484848;
 	font-style: italic;
+}
+
+.confirmation-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 3;
+}
+
+.confirm-box {
+	width: 95%;
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: var(--quaternary-color);
+	margin-bottom: 4rem;
+}
+
+.yes-btn {
+	background-color: var(--primary-color);
+	color: var(--quaternary-color);
+}
+
+.yes-btn:hover {
+	background-color: var(--quaternary-color);
+	color: var(--primary-color);
+	border: solid 1px var(--primary-color);
+}
+
+.done-btn {
+	color: var(--secondary-color);
+	background-color: var(--primary-color);
+}
+
+.confirmation-modal {
+	display: none;
+	justify-content: center;
+	align-items: center;
 }
 </style>

@@ -71,6 +71,7 @@ export default {
 				priority: '',
 				dueDate: '',
 				subtasks: [],
+				isDone: false,
 			},
 			confirmationBoxDisplay: false,
 		};

@@ -19,7 +19,7 @@ const routes = [
 	{
 		path: '/add',
 		name: 'add',
-		component: () => import('../views/AddView.vue')
+		component: () => import('../views/CreateView.vue')
 	},
 	{
 		path: '/profile',
