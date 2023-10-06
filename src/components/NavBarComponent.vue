@@ -25,7 +25,7 @@ import { Icon } from '@iconify/vue';
 export default {
 	components: {
 		Icon
-	}
+	},
 }
 </script>
 <style scoped>
@@ -42,6 +42,7 @@ export default {
 		bottom: 0;
 		left: 0;
 		right: 0;
+		z-index: 2;
 	}	
 
 	nav a {

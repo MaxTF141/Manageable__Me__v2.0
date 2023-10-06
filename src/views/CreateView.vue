@@ -9,16 +9,16 @@
 				</div>
 				<div class="mb-3">
 					<label for="title" class="form-label m-0">Title</label>
-					<input type="text" class="form-control" id="title" placeholder="Title" v-model="add.title">
+					<input type="text" class="form-control" id="title" placeholder="Title" v-model="add.title" required>
 				</div>
 				<div class="mb-3">
 					<label for="description" class="form-label m-0">Description</label>
 					<textarea class="form-control" id="description" rows="5" placeholder="Description"
-						v-model="add.description"></textarea>
+						v-model="add.description" required></textarea>
 				</div>
 				<div class="mb-3">
 					<label for="priority" class="form-label m-0">Priority</label>
-					<select class="form-select" id="priority" v-model="add.priority">
+					<select class="form-select" id="priority" v-model="add.priority" required>
 						<option selected>High</option>
 						<option>Medium</option>
 						<option>Low</option>
@@ -32,7 +32,7 @@
 					<label for="subtasks" class="form-label m-0">Subtasks</label>
 					<div class="subtasks-input" v-for="subtask in add.subtasks" :key="subtask.id">
 						<input type="text" class="form-control my-2" v-model="subtask.description"
-							placeholder="Add a Subtask">
+							placeholder="Add a Subtask" required>
 						<Icon class="subtask-bin" icon="uiw:delete" color="#8d42b9" width="21"
 							@click="removeSubtask(subtask.id)" />
 					</div>

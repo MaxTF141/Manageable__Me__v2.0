@@ -61,7 +61,7 @@
 					<router-link to="/">
 						<button @click="isDone(task)" class="yes-btn btn btn-light">Yes, It's done</button>
 					</router-link>
-					<button @click="cancelBack()" class="btn btn-light">No, Not yet</button>
+					<button @click="cancelBack(task)" class="btn btn-light">No, Not yet</button>
 				</div>
 			</div>
 		</div>
@@ -124,8 +124,7 @@ export default {
 				return ''
 			}
 		},
-		toggleDone(subtask) {
-			subtask.completed = !subtask.completed;
+		localStorageSet() {
 			let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 			let index = tasks.findIndex(task => task.id === this.id);
 			if (index !== -1) {
@@ -133,22 +132,23 @@ export default {
 				localStorage.setItem('tasks', JSON.stringify(tasks));
 			}
 		},
+		toggleDone(subtask) {
+			subtask.completed = !subtask.completed;
+			this.localStorageSet();
+		},
 		isDone(task) {
-			task.isDone = !task.isDone;
-			let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-			let index = tasks.findIndex(task => task.id === this.id);
-			if (index !== -1) {
-				tasks[index] = this.task;
-				localStorage.setItem('tasks', JSON.stringify(tasks));
-			}
+			task.isDone = true
+			this.localStorageSet();
 		},
 		confirmationModal() {
 			const modal = document.querySelector('.confirmation-modal');
 			modal.style.display = 'flex';
 		},
-		cancelBack() {
+		cancelBack(task) {
+			task.isDone = !task.isDone;
 			const modal = document.querySelector('.confirmation-modal');
 			modal.style.display = 'none';
+			this.localStorageSet();
 		}
 	},
 	created() {

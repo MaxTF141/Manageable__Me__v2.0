@@ -16,14 +16,14 @@ export default {
 :root {
 	--primary-color: #8d42b9;
 	--secondary-color: #fff;
-	--tertiary-color: #5a5a5a;
+	--tertiary-color: #130d0d;
 	--quaternary-color: #efefef;
 	--light-box-shadow: 0px 0px 15px -9px #7d7d7dbf;
 	--dark-box-shadow: 0px 0px 38px -6px #000000bf;
 }
 
 #app {
-	background-color: #efefef;
+	background-color: var(--quaternary-color);
 	min-height: 100vh;
 	padding-bottom: 100px;
 }

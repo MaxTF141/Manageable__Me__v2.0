@@ -26,6 +26,12 @@ const routes = [
 		name: 'profile',
 		component: () => import('../views/ProfileView.vue')
 	},
+	{
+		path: '/all-tasks/:title',
+		name: 'all-tasks',
+		component: () => import('../views/AllTasksView.vue'),
+		props: true
+	}
 ]
 
 const router = createRouter({
