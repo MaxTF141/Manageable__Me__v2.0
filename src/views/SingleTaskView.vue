@@ -5,7 +5,9 @@
 				<router-link to="/">
 					<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 				</router-link>
-				<Icon icon="lucide:pen-square" color="#fff" width="25" />
+				<router-link :to="{name: 'edit-task', params: {id: task.id}}">
+					<Icon icon="lucide:pen-square" color="#fff" width="25" />
+				</router-link>
 			</div>
 			<div class="task-heading p-4">
 				<h2 class="task-title text-white">{{ task.title }}</h2>
@@ -75,10 +77,28 @@ export default {
 		return {
 			excerpt: true,
 			tasks: [],
+			editTasks: {
+				title: '',
+				description: '',
+				dueDate: '',
+				priority: '',
+				subtasks: []
+			}
 		}
 	},
 	components: {
 		Icon
+	},
+	watch: {
+		'task.subtasks': {
+			handler: function (subtasks) {
+				const allSubtasksCompleted = subtasks.every(subtask => subtask.completed);
+				if (!allSubtasksCompleted) {
+					this.task.isDone = false; // Set task.isDone to false if not all subtasks are completed
+				}
+			},
+			deep: true,
+		},
 	},
 	computed: {
 		task() {
@@ -86,7 +106,6 @@ export default {
 		},
 		taskDone() {
 			return this.task.subtasks.every(subtask => subtask.completed);
-			// return false;
 		}
 	},
 	methods: {
@@ -139,6 +158,7 @@ export default {
 		isDone(task) {
 			task.isDone = true
 			this.localStorageSet();
+			console.log(task.isDone)
 		},
 		confirmationModal() {
 			const modal = document.querySelector('.confirmation-modal');
@@ -213,11 +233,11 @@ export default {
 }
 
 .excerpt::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: linear-gradient(to bottom, transparent, var(--quaternary-color));
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: linear-gradient(to bottom, transparent, var(--quaternary-color));
 }
 
 

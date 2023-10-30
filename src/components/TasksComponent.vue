@@ -1,7 +1,7 @@
 <template>
 	<TasksListComponent :tasks="inProgressTasks" title="In Progress" message="No tasks yet" />
-	<TasksListComponent :tasks="completedTasks" title="Completed" message="Hmm I think it's about time that something gets done around here "/>
 	<TasksListComponent :tasks="overdueTasks" title="Overdue" message="Congrats! No overdue tasks. Keep up the good work"/>
+	<TasksListComponent :tasks="completedTasks" title="Completed" message="Hmm I think it's about time that something gets done around here "/>
 </template>
 <script>
 import TasksListComponent from '@/components/TasksListComponent.vue';

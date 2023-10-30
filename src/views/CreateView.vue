@@ -34,7 +34,7 @@
 						<input type="text" class="form-control my-2" v-model="subtask.description"
 							placeholder="Add a Subtask" required>
 						<Icon class="subtask-bin" icon="uiw:delete" color="#8d42b9" width="21"
-							@click="removeSubtask(subtask.id)" />
+							@click="removeSubtask(subtask.id)"/>
 					</div>
 					<button type="button" class="add-subtask btn btn-light" @click="addSubtaskField">Add Subtask</button>
 				</div>
@@ -134,20 +134,6 @@ export default {
 			this.confirmationBoxDisplay = false;
 		},
 	},
-	// beforeRouteLeave(to, from, next) {
-	// 	if (
-	// 		this.add.title !== '' ||
-	// 		this.add.description !== '' ||
-	// 		this.add.priority !== '' ||
-	// 		this.add.dueDate !== '' ||
-	// 		this.add.subtasks.length > 0
-	// 	) {
-	// 		this.confirmationBoxDisplay = true;
-	// 		next(false);
-	// 	} else {
-	// 		next();
-	// 	}
-	// },
 	created() {
 		window.addEventListener('popstate', this.isEmpty);
 	},

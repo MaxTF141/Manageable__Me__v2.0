@@ -5,7 +5,7 @@
 		<div v-if="tasks.length > 3" class="">
 			<div @click="allTasks(tasks, title)" class="see-all d-flex align-items-center">
 				<p class="m-0">See All</p>
-				<Icon icon="iconamoon:arrow-right-2-thin" width="27"/>
+				<Icon icon="iconamoon:arrow-right-2-thin" width="27" />
 			</div>
 		</div>
 	</div>
@@ -39,22 +39,23 @@ export default {
 		tasksLength() {
 			return this.tasks.length > 3 ? 'excerpt' : '';
 		},
-		allTasks(tasks,  title) {
+		allTasks(tasks, title) {
 			let titleSpaceless = title.split(' ').join('');
 			let lowerCaseTitle = titleSpaceless.toLowerCase();
 			console.log(tasks)
-			this.$router.push({ 
-				name: 'all-tasks', 
-				params: { 
-					tasks: tasks,
-					title: lowerCaseTitle 
-				} });
+			this.$router.push({
+				name: 'all&tasks',
+				params: {
+					// tasks: tasks,
+					title: lowerCaseTitle
+				}
+			});
+			console.log(tasks, title)
 		}
 	}
 }
 </script>
 <style>
-
 .excerpt {
 	position: relative;
 	/* max-height: 50em; */
@@ -67,12 +68,12 @@ export default {
 }
 
 .excerpt::before {
-  content: '';
-  width: 100%;
-  height: 30%;
-  position: absolute;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent, var(--quaternary-color));
+	content: '';
+	width: 100%;
+	height: 30%;
+	position: absolute;
+	bottom: 0;
+	background: linear-gradient(to bottom, transparent, var(--quaternary-color));
 }
 
 .see-all {
