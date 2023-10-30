@@ -40,7 +40,7 @@ export default {
 			return this.tasks.length > 3 ? 'excerpt' : '';
 		},
 		allTasks(tasks, title) {
-			let titleSpaceless = title.split(' ').join('');
+			let titleSpaceless = title.split(' ').join('&');
 			let lowerCaseTitle = titleSpaceless.toLowerCase();
 			console.log(tasks)
 			this.$router.push({
@@ -73,7 +73,7 @@ export default {
 	height: 30%;
 	position: absolute;
 	bottom: 0;
-	background: linear-gradient(to bottom, transparent, var(--quaternary-color));
+	background: linear-gradient(to bottom, transparent, rgba(194, 194, 194, 0));
 }
 
 .see-all {

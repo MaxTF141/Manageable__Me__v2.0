@@ -33,12 +33,14 @@ export default {
 
 .category-box {
 	display: inline-block;
-	background-color: #fff;
 	border-radius: 10px;
 	height: 7rem;
 	width: 8rem;
 	margin: 0.5rem;
 	font-size: 1rem;
-	box-shadow: 0px 0px 15px -9px rgba(125, 125, 125, 0.75);
+	box-shadow: var(--light-box-shadow);
+	backdrop-filter: blur(7px);
+	background-color: rgba(184, 184, 184, 0.317);
+	border: 1px solid rgb(122, 122, 122);
 }
 </style>

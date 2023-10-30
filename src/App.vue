@@ -18,12 +18,14 @@ export default {
 	--secondary-color: #fff;
 	--tertiary-color: #130d0d;
 	--quaternary-color: #efefef;
-	--light-box-shadow: 0px 0px 15px -9px #7d7d7dbf;
+	--light-box-shadow: 0px 0px 19px -9px rgba(0,0,0,0.75);
 	--dark-box-shadow: 0px 0px 38px -6px #000000bf;
 }
 
 #app {
-	background-color: var(--quaternary-color);
+	background-image: url('https://i.postimg.cc/dQ8mdqxy/kazuend-2-KXEb-8-G5vo-unsplash.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	min-height: 100vh;
 	padding-bottom: 100px;
 }
@@ -41,7 +43,7 @@ body::-webkit-scrollbar {
 }
 
 h4 {
-	color: var(--tertiary-color) !important;
+	color: var(--secondary-color) !important;
 	font-size: 1rem !important;
 }
 

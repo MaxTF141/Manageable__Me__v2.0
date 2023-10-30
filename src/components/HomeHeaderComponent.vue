@@ -1,22 +1,24 @@
 <template>
 	<section class="header">
 		<div class="container">
-			<div class="row d-flex align-items-start">
-				<div class="col-10">
+			<div class="d-flex justify-content-between align-items-start justify-content-between">
+				<div class="">
 					<h2 class="heading">Manageable Me</h2>
 					<p class="current-date">{{ currentDate() }}</p>
 				</div>
-				<div class="col-2">
-					<img class="profile-img"
-						src="https://i.postimg.cc/zvh1fcf4/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg"
-						alt="">
+				<div class="">
+					<Icon icon="ic:baseline-history" width="28" />
 				</div>
 			</div>
 		</div>
 	</section>
 </template>
 <script>
+import {Icon} from '@iconify/vue'
 export default {
+	components: {
+		Icon
+	},
 	methods: {
 		currentDate() {
 			let today = new Date();
@@ -30,7 +32,7 @@ export default {
 </script>
 <style>
 .header {
-	background: linear-gradient(90deg, #4a0174 0%, #aa03e2 100%);
+	background: linear-gradient(0deg, #343e66bd 20%, #343E66 80%);
 	color: #fff;
 	padding: 90px 10px;
 	padding-top: 30px;

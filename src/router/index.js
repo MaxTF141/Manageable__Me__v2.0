@@ -37,6 +37,11 @@ const routes = [
 		name: 'edit-task',
 		component: () => import('../views/EditTasksView.vue'),
 		props: true
+	},
+	{
+		path: '/history',
+		name: 'history',
+		component: () => import('../views/HistoryView.vue')
 	}
 
 ]

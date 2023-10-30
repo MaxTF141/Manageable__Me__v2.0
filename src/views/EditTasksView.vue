@@ -2,11 +2,11 @@
 	<section v-if="task" id="single-task" class="single-task">
 		<form @submit.prevent="editTask(task)">
 			<div class="header py-2">
-				<div class="icons d-flex justify-content-between px-2">
+				<div class="icons d-flex justify-content-between">
 					<router-link to="/">
 						<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 					</router-link>
-					<button type="submit" class="btn btn-">
+					<button type="submit" class="btn btn- p-0">
 						<Icon icon="ion:save-outline" color="#fff" width="25" />
 					</button>
 				</div>
@@ -100,20 +100,18 @@ export default {
 			this.localStorageSet();
 		},
 		yesCancel(task) {
-			// const modal = document.querySelector('.confirmation-modal');
-			// modal.style.display = 'none';
 			this.$router.push(`/tasks/${task.id}`);
 		},
 		close() {
 			const modal = document.querySelector('.confirmation-modal');
-			modal.style.display = 'none'
+			modal.style.display = 'none';
 		},
 		editTask(edit) {
 			if (this.task) {
 				const taskIndex = this.tasks.findIndex((t) => t.id === edit.id);
 				if (taskIndex !== -1) {
 					this.tasks[taskIndex] = edit;
-					localStorage.setItem('tasks', JSON.stringify(this.tasks))
+					localStorage.setItem('tasks', JSON.stringify(this.tasks));
 				}
 			} else {
 				return;
@@ -231,12 +229,6 @@ export default {
 	color: var(--secondary-color);
 	background-color: var(--primary-color);
 }
-
-/* .confirmation-modal {
-	display: none;
-	justify-content: center;
-	align-items: center;
-} */
 
 .input-title {
 	background-color: rgba(255, 255, 255, 0);

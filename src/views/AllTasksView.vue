@@ -1,12 +1,22 @@
 <template>
-	<TaskLink v-for="task in filteredTasks" :key="task.id" :task="task" />
+	<div class="px-3">
+		<div class="all-tasks-header d-flex justify-content-between align-items-center">
+			<router-link to="/">
+				<Icon icon="ion:chevron-back-sharp" color="#000" width="28" />
+			</router-link>
+			<h2 class="p-3 m-0">{{ newTitle() }} tasks</h2>
+		</div>
+		<TaskLink class="my-3" v-for="task in filteredTasks" :key="task.id" :task="task" />
+	</div>
 </template>
 
 <script>
 import TaskLink from '@/components/TasksLinkComponent.vue';
+import { Icon } from '@iconify/vue'
 export default {
 	components: {
-		TaskLink
+		TaskLink,
+		Icon
 	},
 	props: ['title'],
 
@@ -23,7 +33,7 @@ export default {
 			switch (this.title) {
 				case 'completed':
 					return this.tasks.filter(tasks => tasks.isDone)
-				case 'inprogress':
+				case 'in&progress':
 					return this.tasks.filter(task => !task.isDone && !this.isTaskOverdue(task));
 				case 'overdue':
 					return this.tasks.filter(task => !task.isDone && this.isTaskOverdue(task));
@@ -31,22 +41,18 @@ export default {
 					return null;
 			}
 		}
-		// inProgressTasks(title) {
-		// 	// let tasks = this.tasks.filter(task => !task.isDone && !this.isTaskOverdue(task));
-		// 	return this.tasks.filter(task => !task.isDone && !this.isTaskOverdue(task));
-		// },
-		// completedTasks() {
-		// 	return this.tasks.filter(tasks => tasks.isDone)
-		// },
-		// overdueTasks() {
-		// 	return this.tasks.filter(task => !task.isDone && this.isTaskOverdue(task));
-		// }
 	},
 	methods: {
 		isTaskOverdue(task) {
 			const dueDate = new Date(task.dueDate);
 			const currentDate = new Date();
 			return dueDate < currentDate;
+		},
+		newTitle() {
+			let newTitle = this.title.split('&').join(' ');
+			let result = newTitle.charAt(0).toUpperCase() + newTitle.slice(1);
+			console.log(result)
+			return result;
 		}
 	}
 }

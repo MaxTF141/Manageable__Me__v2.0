@@ -1,5 +1,5 @@
 <template>
-		<router-link class="task-box d-flex flex-column justify-content-evenly"
+		<router-link class="task-box my-2 d-flex flex-column justify-content-evenly"
 			:to="{ name: 'task', params: { id: task.id } }">
 			<div class="priority-pill">
 				<p class="m-0">{{ task.priority }}</p>
@@ -37,15 +37,29 @@ export default {
 
 .task-box {
 	display: inline-block;
-	background-color: var(--secondary-color);
 	border-radius: 10px;
 	height: 10rem;
 	width: 100%;
-	margin: 0.5rem;
 	font-size: 1rem;
-	box-shadow: var(--light-box-shadow);
 	padding: 10px;
+	position: relative;
+	box-shadow: var(--light-box-shadow);
+	backdrop-filter: blur(7px);
+	background-color: rgba(184, 184, 184, 0.317);
+	border: 1px solid rgb(122, 122, 122);
 }
+
+/* .task-box::after {
+	content: 'ddfdfd';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	box-shadow: inherit;
+	border-radius: inherit;
+
+} */
 
 .priority-pill {
 	background-color: #decbe8;
@@ -59,6 +73,6 @@ export default {
 
 a {
 	text-decoration: none;
-	color: var(--tertiary-color);
+	color: var(--secondary-color);
 }
 </style>
