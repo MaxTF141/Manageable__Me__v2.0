@@ -1,5 +1,5 @@
 <template>
-	<section class="header">
+	<section class="header py-2">
 		<div class="container">
 			<div class="d-flex justify-content-between align-items-start justify-content-between">
 				<div class="">
@@ -34,8 +34,8 @@ export default {
 .header {
 	background: linear-gradient(0deg, #343e66bd 20%, #343E66 80%);
 	color: #fff;
-	padding: 90px 10px;
-	padding-top: 30px;
+	padding-bottom: 90px !important;
+	/* padding-top: 30px; */
 }
 
 .heading {

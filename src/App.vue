@@ -26,6 +26,7 @@ export default {
 	background-image: url('https://i.postimg.cc/dQ8mdqxy/kazuend-2-KXEb-8-G5vo-unsplash.jpg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
+	background-size: cover;
 	min-height: 100vh;
 	padding-bottom: 100px;
 }

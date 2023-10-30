@@ -1,7 +1,7 @@
 <template>
 	<section v-if="task" id="single-task" class="single-task">
 		<form @submit.prevent="editTask(task)">
-			<div class="header py-2">
+			<div class="edit-header py-2">
 				<div class="icons d-flex justify-content-between">
 					<router-link to="/">
 						<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
@@ -36,13 +36,13 @@
 				</div>
 			</div>
 			<div class="task-container p-4">
-				<h3>Description</h3>
+				<h3 class="text-light">Description</h3>
 				<textarea class="m-0 description" v-model="task.description" />
 				<div class="subtasks py-4">
-					<h3>Subtasks</h3>
+					<h3 class="text-light">Subtasks</h3>
 					<div class="subtask-box my-1" v-for="subtask in task.subtasks" :key="subtask.id">
 						<div class="row">
-							<input type="text" class="form-control my-2" v-model="subtask.description"
+							<input type="text" class="text-light form-control my-2" v-model="subtask.description"
 								placeholder="Add a Subtask" required>
 						</div>
 					</div>
@@ -125,20 +125,23 @@ export default {
 </script>
 <style scoped>
 .single-task {
-	background: linear-gradient(90deg, #4a0174 0%, #aa03e2 100%);
 	height: 100vh;
 	min-height: 100vh;
-	padding-bottom: 4rem;
+	background-color: #343E66;
 }
 
 .task-container {
-	background-color: var(--quaternary-color);
+	background-image: url('https://i.postimg.cc/dQ8mdqxy/kazuend-2-KXEb-8-G5vo-unsplash.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
 	width: 100vw;
 	min-height: 100vh;
 	max-height: 80vh;
 	overflow-y: auto;
 	border-radius: 30px 30px 0 0;
 	box-shadow: var(--dark-box-shadow);
+	
 }
 
 .task-title {
@@ -156,7 +159,7 @@ export default {
 	font-size: 0.7rem;
 }
 
-.header {
+.edit-header {
 	position: sticky;
 	top: 0;
 	z-index: 0;
@@ -180,16 +183,18 @@ export default {
 
 .subtask-box {
 	display: inline-block;
-	background-color: var(--secondary-color);
 	border-radius: 10px;
 	width: 100%;
 	font-size: 1rem;
-	box-shadow: var(--light-box-shadow);
 	padding: 10px;
+	box-shadow: var(--light-box-shadow);
+	backdrop-filter: blur(7px);
+	background-color: rgba(184, 184, 184, 0.317);
+	border: 1px solid rgb(122, 122, 122);
 }
 
 .description {
-	color: #484848;
+	color: #fff;
 	font-style: italic;
 }
 

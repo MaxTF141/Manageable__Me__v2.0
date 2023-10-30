@@ -1,5 +1,5 @@
 <template>
-	<h5 class="m-0">{{ title }}</h5>
+	<h5 class="m-0 text-light">{{ title }}</h5>
 	<div v-if="tasks.length" :class="tasksLength()" class="tasks pb-4 d-flex flex-column align-items-center">
 		<TaskLink v-for="task in modifiedTasks" :key="task.id" :task="task" />
 		<div v-if="tasks.length > 3" class="">
@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div v-else class="empty-message py-3">
-		<p class="text-center fst-italic fw-lighter">{{ message }}</p>
+		<p class="text-center fst-italic fw-lighter text-light">{{ message }}</p>
 	</div>
 </template>
 <script>

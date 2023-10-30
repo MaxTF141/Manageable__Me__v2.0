@@ -4,7 +4,7 @@
 		<Categories />
 		<hr class="mx-auto">
 		<section id="tasks" class="px-3">
-			<h2 class="text-center">Task list</h2>
+			<h2 class="text-center text-light">Task list</h2>
 			<Tasks />
 		</section>
 	</div>
@@ -24,8 +24,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 
 hr {
 	width: 70%;
