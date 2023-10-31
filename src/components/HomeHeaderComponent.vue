@@ -6,9 +6,9 @@
 					<h2 class="heading">Manageable Me</h2>
 					<p class="current-date">{{ currentDate() }}</p>
 				</div>
-				<div class="">
+				<router-link to="/history">
 					<Icon icon="ic:baseline-history" width="28" />
-				</div>
+				</router-link>
 			</div>
 		</div>
 	</section>

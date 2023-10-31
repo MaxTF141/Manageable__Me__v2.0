@@ -1,11 +1,13 @@
 <template>
 	<h5 class="m-0 text-light">{{ title }}</h5>
-	<div v-if="tasks.length" :class="tasksLength()" class="tasks pb-4 d-flex flex-column align-items-center">
-		<TaskLink v-for="task in modifiedTasks" :key="task.id" :task="task" />
+	<div v-if="tasks.length" :class="tasksLength()" class="pb-4" >
+		<div class="tasks d-flex flex-column align-items-center">
+			<TaskLink v-for="task in modifiedTasks" :key="task.id" :task="task" />
+		</div>
 		<div v-if="tasks.length > 3" class="">
-			<div @click="allTasks(tasks, title)" class="see-all d-flex align-items-center">
-				<p class="m-0">See All</p>
-				<Icon icon="iconamoon:arrow-right-2-thin" width="27" />
+			<div @click="allTasks(tasks, title)" class="see-all d-flex align-items-center justify-content-end">
+				<p class="m-0 pt-2 text-light">See All</p>
+				<Icon icon="iconamoon:arrow-right-2-thin" width="27" color="#fff"/>
 			</div>
 		</div>
 	</div>
@@ -67,17 +69,17 @@ export default {
 	-webkit-box-orient: vertical;
 }
 
-.excerpt::before {
+/* .excerpt::before {
 	content: '';
 	width: 100%;
 	height: 30%;
 	position: absolute;
 	bottom: 0;
 	background: linear-gradient(to bottom, transparent, rgba(194, 194, 194, 0));
-}
+} */
 
-.see-all {
+/* .see-all {
 	position: absolute;
 	bottom: 0;
-}
+} */
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<section v-if="task" id="single-task" class="single-task">
-		<div class="header py-2">
-			<div class="icons d-flex justify-content-between">
+		<div class="task-header py-2">
+			<div class="icons d-flex justify-content-between pe-2">
 				<router-link to="/">
 					<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 				</router-link>
@@ -211,7 +211,7 @@ export default {
 	font-size: 0.7rem;
 }
 
-.header {
+.task-header {
 	position: sticky;
 	top: 0;
 	z-index: 0;

@@ -2,7 +2,7 @@
 	<section v-if="task" id="single-task" class="single-task">
 		<form @submit.prevent="editTask(task)">
 			<div class="edit-header py-2">
-				<div class="icons d-flex justify-content-between">
+				<div class="icons d-flex justify-content-between pe-2">
 					<router-link to="/">
 						<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 					</router-link>
@@ -11,7 +11,8 @@
 					</button>
 				</div>
 				<div class="task-heading p-4">
-					<textarea class="input-title" type="text" v-model="task.title" />
+					<textarea class="input-title" ref="autoResizeTitle" @input="autoResizeTitle" rows="1"
+						v-model="task.title" />
 					<h4 class="text-white">Entertainment</h4>
 					<div class="row pt-3">
 						<div class="col-6 d-flex align-items-center gap-2">
@@ -37,19 +38,20 @@
 			</div>
 			<div class="task-container p-4">
 				<h3 class="text-light">Description</h3>
-				<textarea class="m-0 description" v-model="task.description" />
+				<textarea class="m-0 description" ref="autoResizeDescription" @input="autoResizeDescription" rows="1" v-model="task.description" />
 				<div class="subtasks py-4">
 					<h3 class="text-light">Subtasks</h3>
 					<div class="subtask-box my-1" v-for="subtask in task.subtasks" :key="subtask.id">
-						<div class="row">
-							<input type="text" class="text-light form-control my-2" v-model="subtask.description"
-								placeholder="Add a Subtask" required>
-						</div>
+						<!-- <div class="subtask-row"> -->
+						<input type="text" class="text-light form-control my-2" v-model="subtask.description"
+							placeholder="Add a Subtask" required>
+						<!-- </div> -->
 					</div>
 				</div>
 				<div class="btn-container d-flex flex-column mt-auto">
 					<button @click="cancel()" class="done-btn btn">Cancel</button>
 				</div>
+				<p class="fs-italic" v-if="task.isDone">This task was marked done</p>
 			</div>
 			<div class="confirmation-modal">
 				<div class="confirm-box">
@@ -117,9 +119,27 @@ export default {
 				return;
 			}
 		},
+		autoResizeDescription() {
+			let textarea = this.$refs.autoResizeDescription;
+			textarea.style.height = 'auto'; // Reset the height to auto
+			textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
+			console.log(textarea.style.height)
+		},
+		autoResizeTitle() {
+			let textarea = this.$refs.autoResizeTitle;
+			textarea.style.height = 'auto'; // Reset the height to auto
+			textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
+			console.log(textarea.style.height)
+		}
+		
+
 	},
 	created() {
 		this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+	},
+	mounted() {
+		this.autoResizeDescription();
+		this.autoResizeTitle();
 	}
 }
 </script>
@@ -141,7 +161,7 @@ export default {
 	overflow-y: auto;
 	border-radius: 30px 30px 0 0;
 	box-shadow: var(--dark-box-shadow);
-	
+
 }
 
 .task-title {
@@ -241,16 +261,13 @@ export default {
 	color: white;
 	font-weight: bold;
 	font-size: 1.5rem;
-	min-height: 50px;
-	max-height: 200px;
-	white-space: pre-wrap;
-	overflow-y: auto;
+	line-height: 1.2;
 }
 
 .description {
-	min-height: 50px;
+	/* min-height: 50px; */
 	width: 100%;
-	height: 17rem;
+	/* height: 140px; */
 	background-color: rgba(255, 255, 255, 0);
 	border: 0;
 }
@@ -268,5 +285,19 @@ select {
 
 option {
 	color: #000;
+}
+
+.date-text,
+#priority {
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+
+.subtask-box input {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.subtask-box input:focus {
+	backdrop-filter: blur(0px);
 }
 </style>

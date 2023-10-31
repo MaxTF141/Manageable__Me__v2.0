@@ -8,9 +8,11 @@
 			<Tasks />
 		</section>
 	</div>
+	<Navbar />
 </template>
 
 <script>
+import Navbar from '@/components/NavBarComponent.vue'
 import HomeHeader from '@/components/HomeHeaderComponent.vue'
 import Categories from '@/components/CategoriesComponent.vue'
 import Tasks from '@/components/TasksComponent.vue'
@@ -18,7 +20,8 @@ export default {
 	components: {
 		HomeHeader,
 		Categories,
-		Tasks
+		Tasks,
+		Navbar
 	},
 
 }

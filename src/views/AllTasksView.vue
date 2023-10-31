@@ -2,9 +2,9 @@
 	<div class="px-3">
 		<div class="all-tasks-header d-flex justify-content-between align-items-center">
 			<router-link to="/">
-				<Icon icon="ion:chevron-back-sharp" color="#000" width="28" />
+				<Icon icon="ion:chevron-back-sharp" color="#fff" width="28" />
 			</router-link>
-			<h2 class="p-3 m-0">{{ newTitle() }} tasks</h2>
+			<h2 class="p-3 m-0 text-light">{{ newTitle() }} tasks</h2>
 		</div>
 		<TaskLink class="my-3" v-for="task in filteredTasks" :key="task.id" :task="task" />
 	</div>
