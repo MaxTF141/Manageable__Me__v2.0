@@ -9,16 +9,16 @@
 				</div>
 				<div class="mb-3">
 					<label for="title" class="form-label m-0">Title</label>
-					<input type="text" class="form-control" id="title" placeholder="Title" v-model="add.title" required>
+					<input type="text" class="form-control text-light" id="title" placeholder="Title" v-model="add.title" required>
 				</div>
 				<div class="mb-3">
 					<label for="description" class="form-label m-0">Description</label>
-					<textarea class="form-control" id="description" rows="5" placeholder="Description"
+					<textarea class="form-control text-light" id="description" rows="5" placeholder="Description"
 						v-model="add.description" required></textarea>
 				</div>
 				<div class="mb-3">
 					<label for="priority" class="form-label m-0">Priority</label>
-					<select class="form-select" id="priority" v-model="add.priority" required>
+					<select class="form-select text-light" id="priority" v-model="add.priority" required>
 						<option selected>High</option>
 						<option>Medium</option>
 						<option>Low</option>
@@ -26,7 +26,7 @@
 				</div>
 				<div class="mb-3">
 					<label for="due-date" class="form-label m-0">Due Date</label>
-					<input type="date" class="form-control" id="due-date" placeholder="Due Date" v-model="add.dueDate">
+					<input type="date" class="form-control text-light" id="due-date" placeholder="Due Date" v-model="add.dueDate">
 				</div>
 				<div class="mb-3 d-flex flex-column">
 					<label for="subtasks" class="form-label m-0">Subtasks</label>
@@ -143,7 +143,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 input,
 select {
 	height: 3rem;
@@ -153,6 +153,10 @@ input,
 textarea,
 select {
 	border-radius: 15px !important;
+	box-shadow: var(--light-box-shadow) !important;
+	backdrop-filter: blur(7px) !important;
+	background-color: rgba(184, 184, 184, 0.317) !important;
+	border: 1px solid rgb(122, 122, 122) !important;
 }
 
 input:focus,
@@ -160,6 +164,10 @@ textarea:focus,
 select:focus {
 	border: 1px solid var(--primary-color) !important;
 	box-shadow: 0px 0px 10px var(--primary-color) !important;
+}
+
+option {
+	color: #000;
 }
 
 .done-btn,
@@ -212,4 +220,5 @@ select:focus {
 	color: var(--primary-color);
 	border: solid 1px var(--primary-color);
 }
+
 </style>

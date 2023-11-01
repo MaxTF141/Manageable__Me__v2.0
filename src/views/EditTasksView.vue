@@ -42,10 +42,8 @@
 				<div class="subtasks py-4">
 					<h3 class="text-light">Subtasks</h3>
 					<div class="subtask-box my-1" v-for="subtask in task.subtasks" :key="subtask.id">
-						<!-- <div class="subtask-row"> -->
 						<input type="text" class="text-light form-control my-2" v-model="subtask.description"
 							placeholder="Add a Subtask" required>
-						<!-- </div> -->
 					</div>
 				</div>
 				<div class="btn-container d-flex flex-column mt-auto">
@@ -121,14 +119,14 @@ export default {
 		},
 		autoResizeDescription() {
 			let textarea = this.$refs.autoResizeDescription;
-			textarea.style.height = 'auto'; // Reset the height to auto
-			textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
+			textarea.style.height = 'auto'; 
+			textarea.style.height = textarea.scrollHeight + 'px'; 
 			console.log(textarea.style.height)
 		},
 		autoResizeTitle() {
 			let textarea = this.$refs.autoResizeTitle;
-			textarea.style.height = 'auto'; // Reset the height to auto
-			textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to the scrollHeight
+			textarea.style.height = 'auto'; 
+			textarea.style.height = textarea.scrollHeight + 'px'; 
 			console.log(textarea.style.height)
 		}
 		
